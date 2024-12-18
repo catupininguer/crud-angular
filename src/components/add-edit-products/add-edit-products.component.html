@@ -1,0 +1,54 @@
+<div class="row vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-lg-6">
+        <div class="card border-primary mb-3 w-75 mx-auto">
+            <div class="card-header text-center">
+                <strong>{{operacion}} producto</strong>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addProduct()">
+                    <input formControlName="name" type="text" class="form-control mb-3" placeholder="Ingrese nombre:">
+                    <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
+                        <strong>El campo nombre es requerido</strong>
+                    </span>
+
+                    <input formControlName="description" type="text" class="form-control mb-3" placeholder="Ingrese descripción:">
+                    <span *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched">
+                        <strong>El campo descripción es requerido</strong>
+                    </span>
+
+                    <input formControlName="price" type="number" class="form-control mb-3" placeholder="Ingrese precio:">
+                    <span *ngIf="form.get('price')?.hasError('required') && form.get('price')?.touched">
+                        <strong>El campo precio es requerido</strong>
+                    </span>
+
+                    <input formControlName="stock" type="number" class="form-control mb-3" placeholder="Ingrese stock:">
+                    <span *ngIf="form.get('stock')?.hasError('required') && form.get('stock')?.touched">
+                        <strong>El campo stock es requerido</strong>
+                    </span>
+
+                    <div>
+                        <label for="categoria">Seleccione una categoría:</label>
+                        <select formControlName="categoria" class="form-control mb-3" id="categoria">
+                          <option value="" disabled selected>Seleccione una categoría</option>
+                          <option value="bebida">Bebida</option>
+                          <option value="alimentos">Alimentos</option>
+                          <option value="limpieza">Limpieza</option>
+                        </select>
+                        <span *ngIf="form.get('categoria')?.hasError('required') && form.get('categoria')?.touched">
+                          <strong>El campo categoría es requerido</strong>
+                        </span>
+                      </div>
+
+                    <div class="row mt-4 text-center">
+                        <div class="col-lg-6">
+                            <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-lg btn-block">Aceptar</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button routerLink="/" type="button" class="btn btn-dark btn-lg btn-block">Volver</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
